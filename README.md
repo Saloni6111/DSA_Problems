@@ -13,7 +13,7 @@ Start by forking this repository to your own GitHub account by clicking the “F
 
 Once you have forked the repository, clone it to your local machine:
 
-``` git clone https://github.com/<your-username>/DSA-Solutions.git ```
+``` git clone https://github.com/Saloni6111/DSA_Problems-Hacktoberfest-24.git ```
 
 ### 3. Create a Branch
 Before you make any changes, create a new branch for your contribution:
