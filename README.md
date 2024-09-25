@@ -12,15 +12,13 @@ Start by forking this repository to your own GitHub account by clicking the “F
 ### 2. Clone the Repository
 
 Once you have forked the repository, clone it to your local machine:
-	
- 	```bash
- 	git clone https://github.com/<your-username>/DSA-Solutions.git
+
+``` git clone https://github.com/<your-username>/DSA-Solutions.git ```
 
 ### 3. Create a Branch
 Before you make any changes, create a new branch for your contribution:
 
-    ```bash
-	git checkout -b your-branch-name
+```git checkout -b your-branch-name```
 
 ### 4. Solve a DSA Problem<br>
 Choose a Data Structures and Algorithms problem from the [issues](https://github.com/Saloni6111/DSA_Problems-Hacktoberfest-24/issues) page, or solve any of the DSA questions listed in the repository.
@@ -33,9 +31,9 @@ Please ensure that your code follows these guidelines:
   We currently accept solutions in all languages. Add your solution under the corresponding folder, if folder is not there please create it.
   
 - **Filename Convention:**  
-  Use meaningful names for the files like `problem-name_your-github-username.ext`. For example:
-  - `two-sum_janedoe.py`
-  - `reverse-linkedlist_johndoe.cpp`
+  Use meaningful names for the files like `problem-name.ext`. For example:
+  - `two-sum.py`
+  - `reverse-linkedlist.cpp`
   
 - **Comments:**  
   Add comments in your code to explain the logic, especially for tricky parts. This will help others understand your thought process and make reviewing your code easier.
@@ -49,9 +47,8 @@ Please ensure that your code follows these guidelines:
 
 ### 6. Make a Pull Request
   Once you’ve committed your changes, push the branch to your forked repository and open a pull request:
-	
-	```bash
-	git push origin your-branch-name
+
+```git push origin your-branch-name```
  
  Go to the original repository on GitHub and click “New Pull Request.”
 
@@ -61,13 +58,13 @@ Once your pull request is approved, it will be merged into the main branch, and 
 ---
 
 ### Project Structure
-
-	```plaintext
-	├── C/
-	├── C++/
-	├── Java/
-	├── Python/
-	└── JavaScript/
+```
+ ├── C/
+ ├── C++/
+ ├── Java/
+ ├── Python/
+ └── JavaScript/
+```
 
 Each language has its own folder. Please place your solution in the appropriate folder.
 
