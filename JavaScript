@@ -1,0 +1,1 @@
+Add your JavaScript codes in this folder.
