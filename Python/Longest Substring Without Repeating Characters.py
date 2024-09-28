@@ -6,12 +6,10 @@ def findSubstring(mainString):
     currentSubstring = ""
 
     # add character to substring unless it is already there
-    # if it is there we break
+    # if it is there we add the current substring to global variable and start looking for next one
     for character in mainString:
         # check if character is in string already. ignore whitespace
         if character in currentSubstring.replace(" ", ""):
-            print(f"already got {character}")
-            # break
             substrings.append(currentSubstring)
             # Clear current substring to look for next one
             currentSubstring = ""
@@ -20,8 +18,19 @@ def findSubstring(mainString):
 
     # add final substring to substrings array after loop is finished
     substrings.append(currentSubstring)
-    print(currentSubstring)
+
+#find the longest substring
+def longestSubstring():
+    longestItem = ""
+    for item in substrings:
+        if len(item) > len(longestItem):
+            longestItem = item
+
+    return len(longestItem)        
 
 if __name__ == "__main__":
-    findSubstring("Enter a string here to find the longest substring with no repeating characters")
+    findSubstring("abcabc1abc12")
+    longest = longestSubstring()
+
     print(substrings)
+    print(longest)
