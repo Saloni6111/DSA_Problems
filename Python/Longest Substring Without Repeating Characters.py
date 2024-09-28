@@ -5,8 +5,6 @@ def findSubstring(mainString):
     # This is the current substring that we are looking at
     currentSubstring = ""
 
-    # add character to substring unless it is already there
-    # if it is there we add the current substring to global variable and start looking for next one
     for character in mainString:
         # check if character is in string already. ignore whitespace
         if character in currentSubstring.replace(" ", ""):
@@ -19,18 +17,30 @@ def findSubstring(mainString):
     # add final substring to substrings array after loop is finished
     substrings.append(currentSubstring)
 
-#find the longest substring
+# find the longest substring
 def longestSubstring():
+    # the current longest item
     longestItem = ""
+
+    # loop through all substrings to find the longest. ignore whitespaces
     for item in substrings:
-        if len(item) > len(longestItem):
+        if len(item.replace(" ", "")) > len(longestItem.replace(" ", "")):
             longestItem = item
 
     return len(longestItem)        
 
 if __name__ == "__main__":
+    # Test case 1: abcabc1abc12
+    # Expected output: 5
     findSubstring("abcabc1abc12")
     longest = longestSubstring()
+    print(longest)
 
-    print(substrings)
+    #clean up
+    substrings.clear()
+
+    # Test case 2: this is a test string
+    # Expected output: 6
+    findSubstring("this is a test string")
+    longest = longestSubstring()
     print(longest)
