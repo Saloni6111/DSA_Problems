@@ -1,0 +1,26 @@
+def find_duplicate(nums):
+    # Using Floyd's Tortoise and Hare algorithm
+    tortoise = nums[0]
+    hare = nums[0]
+    
+    # Phase 1: Finding the intersection point
+    while True:
+        tortoise = nums[tortoise]
+        hare = nums[nums[hare]]
+        if tortoise == hare:
+            break
+    
+    # Phase 2: Finding the entrance to the cycle (duplicate number)
+    tortoise = nums[0]
+    while tortoise != hare:
+        tortoise = nums[tortoise]
+        hare = nums[hare]
+    
+    return hare
+
+# Taking input from the user
+nums = list(map(int, input("Enter the numbers (space-separated): ").split()))
+
+# Finding and printing the duplicate number
+duplicate = find_duplicate(nums)
+print(f"The duplicate number is: {duplicate}")
