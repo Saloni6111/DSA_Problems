@@ -46,7 +46,7 @@ int main() {
     for (int i = 0; i < m; i++) {
         cin >> nums2[i];
     }
-  // Find and print the median
+  // Find and print the median.
     double median = findMedianSortedArrays(nums1, nums2);
     cout << "The median of the two sorted arrays is: " << median << endl;
 
