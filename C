@@ -1,1 +1,0 @@
-write all your C language codes here.
