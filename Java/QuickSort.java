@@ -15,18 +15,20 @@ class Solution {
     // Function to partition the array
     static int partition(int arr[], int low, int high) {
         int pivot = arr[low];
-        int left = low;
+        int left = low + 1;
         int right = high;
 
-        while (left < right) {
-            while (arr[left] <= pivot && left <= high - 1) {
+        while (left <= right) {
+            // Move left index to the right while elements are smaller than pivot
+            while (left <= right && arr[left] <= pivot) {
                 left++;
             }
-            while (arr[right] > pivot && right >= low + 1) {
+            // Move right index to the left while elements are larger than pivot
+            while (left <= right && arr[right] > pivot) {
                 right--;
             }
+            // Swap elements if left is still less than right
             if (left < right) {
-                // Swap arr[left] and arr[right]
                 int temp = arr[left];
                 arr[left] = arr[right];
                 arr[right] = temp;
@@ -34,9 +36,8 @@ class Solution {
         }
 
         // Swap pivot element with arr[right]
-        int temp = arr[low];
         arr[low] = arr[right];
-        arr[right] = temp;
+        arr[right] = pivot;
 
         return right;
     }
@@ -67,7 +68,7 @@ public class QuickSort {
         for (int i = 0; i < n; i++) {
             System.out.print(arr[i] + " ");
         }
-        System.out.println();  
+        System.out.println();
 
         sc.close();
     }
