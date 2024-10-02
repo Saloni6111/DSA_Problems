@@ -1,25 +1,28 @@
-#include<stdio.h>
+#include <stdio.h>
 
-int findDuplicate(int* num, int numSize) {
-    int count[numSize];
-    for (int i = 0; i < numSize; i++) {
-        count[i] = 0;
+int findDuplicate(int* nums, int numsSize) {
+    int slow = nums[0];
+    int fast = nums[0];
+    
+    do {
+        slow = nums[slow];
+        fast = nums[nums[fast]];
+    } while (slow != fast);
+
+    slow = nums[0];
+    while (slow != fast) {
+        slow = nums[slow];
+        fast = nums[fast];
     }
 
-    for (int i = 0; i < numSize; i++) {
-        count[num[i]]++;
-        if (count[num[i]] > 1) {
-            return num[i];
-        }
-    }
-    return -1;
+    return slow;
 }
 
 int main() {
-    int num[] = {1, 3, 4, 2, 2};
-    int size = sizeof(num) / sizeof(num[0]);
+    int nums[] = {1, 3, 4, 2, 2};
+    int size = sizeof(nums) / sizeof(nums[0]);
     
-    int duplicate = findDuplicate(num, size);
+    int duplicate = findDuplicate(nums, size);
     printf("The duplicate number is: %d\n", duplicate);
 
     return 0;
