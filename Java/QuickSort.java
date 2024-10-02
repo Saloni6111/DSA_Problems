@@ -1,74 +1,67 @@
-import java.util.Scanner;
+// Java program for implementation of QuickSort
+class QuickSort
+{
+    int partition(int arr[], int low, int high)
+    {
+        int pivot = arr[high]; 
+        int i = (low-1); // index of smaller element
+        for (int j=low; j&lt;high; j++)
+        {
+          
+            if (arr[j] &lt;= pivot)
+            {
+                i++;
 
-class Solution {
-    // Function to sort an array using the quicksort algorithm.
-    static void quickSort(int arr[], int low, int high) {
-        if (low < high) {
-            // Find pivot index
-            int pivotInd = partition(arr, low, high);
-            // Recursively sort elements before and after the partition
-            quickSort(arr, low, pivotInd - 1);
-            quickSort(arr, pivotInd + 1, high);
+                // swap arr[i] and arr[j]
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+
+  
+        int temp = arr[i+1];
+        arr[i+1] = arr[high];
+        arr[high] = temp;
+
+        return i+1;
+    }
+
+
+
+    void sort(int arr[], int low, int high)
+    {
+        if (low &lt; high)
+        {
+          
+            int pi = partition(arr, low, high);
+
+        
+            sort(arr, low, pi-1);
+            sort(arr, pi+1, high);
         }
     }
 
-    // Function to partition the array
-    static int partition(int arr[], int low, int high) {
-        int pivot = arr[low];
-        int left = low;
-        int right = high;
-
-        while (left < right) {
-            while (arr[left] <= pivot && left <= high - 1) {
-                left++;
-            }
-            while (arr[right] > pivot && right >= low + 1) {
-                right--;
-            }
-            if (left < right) {
-                // Swap arr[left] and arr[right]
-                int temp = arr[left];
-                arr[left] = arr[right];
-                arr[right] = temp;
-            }
-        }
-
-        // Swap pivot element with arr[right]
-        int temp = arr[low];
-        arr[low] = arr[right];
-        arr[right] = temp;
-
-        return right;
+    /* A utility function to print array of size n */
+    static void printArray(int arr[])
+    {
+        int n = arr.length;
+        for (int i=0; i&lt;n; ++i)
+            System.out.print(arr[i]+&quot; &quot;);
+        System.out.println();
     }
-}
 
-public class QuickSort {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    // Driver program
+    public static void main(String args[])
+    {
+        int arr[] = {10, 7, 8, 9, 1, 5};
+        int n = arr.length;
 
-        // Input the size of the array
-        System.out.print("Enter the size of the array: ");
-        int n = sc.nextInt();
+        QuickSort ob = new QuickSort();
+        ob.sort(arr, 0, n-1);
 
-        // Initialize the array
-        int arr[] = new int[n];
-
-        // Input array elements
-        System.out.println("Enter the elements of the array:");
-        for (int i = 0; i < n; i++) {
-            arr[i] = sc.nextInt();
-        }
-
-        // Call quickSort function
-        Solution.quickSort(arr, 0, n - 1);
-
-        // Output the sorted array
-        System.out.println("Sorted array:");
-        for (int i = 0; i < n; i++) {
-            System.out.print(arr[i] + " ");
-        }
-        System.out.println();  
-
-        sc.close();
+        System.out.println(&quot;sorted array&quot;);
+        printArray(arr);
     }
 }
+
