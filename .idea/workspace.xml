@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d076f151-6864-4fb2-8744-107fa1873f6c" name="Default Changelist" comment="added Find Duplicate Integer code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Find Duplicate Integer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/C++/Find Duplicate Integer.c++" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +59,14 @@
       <option name="project" value="LOCAL" />
       <updated>1727864876361</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="added Find Duplicate Integer code">
+      <created>1727865586596</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1727865586596</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
