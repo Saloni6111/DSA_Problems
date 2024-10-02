@@ -28,6 +28,11 @@ using namespace std;
 // DP table where dp[n][k][last] represents the number of ways to get a bit string of length n with exactly k adjacent '1's ending in 'last' (0 or 1)
 ll dp[1001][101][2];
 
+/**
+ * Time complexity: (N*K*2) => (N*K)
+ * Space complexity: (N*K*2) => (N*K)
+ */
+
 // Function to calculate the number of valid bit strings
 ll ftd(int n, int k, int last){ // function-of-top-down
     // Base case: If n is 1, we can only have a single bit string
