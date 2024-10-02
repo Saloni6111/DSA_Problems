@@ -1,10 +1,23 @@
+import java.util.HashMap;
+
 public class SingleNumber {
     public static int findSingleNumber(int[] nums) {
-        int result = 0;
+        HashMap<Integer, Integer> numCounts = new HashMap<>();
+        
+        // Count the occurrences of each number
         for (int num : nums) {
-            result ^= num;  // XOR each number with result
+            numCounts.put(num, numCounts.getOrDefault(num, 0) + 1);
         }
-        return result;
+        
+        // Find the number that occurs only once
+        for (int num : numCounts.keySet()) {
+            if (numCounts.get(num) == 1) {
+                return num;
+            }
+        }
+        
+        // In case there's no single number, though it's guaranteed to be one
+        return -1;
     }
 
     public static void main(String[] args) {
