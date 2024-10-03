@@ -1,47 +1,33 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<vector<int>> threeSum(vector<int> &nums) {
-    // Sort the array to facilitate two-pointer approach and duplicate handling
-    sort(nums.begin(), nums.end());
-    vector<vector<int>> ans;
-
-    // Traverse the array
-    for (int i = 0; i < nums.size() - 2; i++) {
-        // Skip duplicates for the first element of the triplet
-        if (i > 0 && nums[i] == nums[i - 1]) {
-            continue;
-        }
-
-        int j = i + 1;
-        int k = nums.size() - 1;
-
-        // Two-pointer approach for the remaining two elements
-        while (j < k) {
-            int sum = nums[i] + nums[j] + nums[k];
-
-            if (sum == 0) {
-                ans.push_back({nums[i], nums[j], nums[k]});
-
-                // Skip duplicates for the second element
-                while (j < k && nums[j] == nums[j + 1]) j++;
-                // Skip duplicates for the third element
-                while (j < k && nums[k] == nums[k - 1]) k--;
-
-                j++;
-                k--;
-            }
-            else if (sum < 0) {
-                j++; // We need a larger sum, so move the left pointer
-            }
-            else {
-                k--; // We need a smaller sum, so move the right pointer
+vector<vector<int>> threeSum(vector<int>& nums) {
+        int target=0;
+        sort(nums.begin(),nums.end());
+        set<vector<int>> s;
+        vector<vector<int>> sample;
+        for(int i=0;i<nums.size();i++){
+            int j=i+1;
+            int k= nums.size()-1;
+            while(j<k){
+                int sum = nums[i] + nums[j] + nums[k];
+                if(sum==target){
+                    s.insert({nums[i],nums[j],nums[k]});
+                    j++;
+                    k--;
+                }else if(sum<target){
+                    j++;
+                }else{
+                    k--;
+                }
             }
         }
+        for(auto store:s){
+            sample.push_back(store);
+        }
+        return sample;
     }
 
-    return ans;
-}
 
 int main() {
     int n;
