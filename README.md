@@ -24,7 +24,6 @@ Before you make any changes, create a new branch for your contribution:
 Choose a Data Structures and Algorithms problem from the [issues](https://github.com/Saloni6111/DSA_Problems-Hacktoberfest-24/issues) page, or solve any of the DSA questions listed in the repository.
 
 ### 5. Follow the Code Guidelines
-
 Please ensure that your code follows these guidelines:
 
 - **Languages Accepted:**  
