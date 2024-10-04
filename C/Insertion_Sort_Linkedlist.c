@@ -122,7 +122,7 @@ int main()
     printf("Before Sorting:\n");
     Display(Head);
 
-    InsertionSort(&Head);
+    SelectionSort(&Head);
 
     printf("\nAfter Sorting:\n");
     Display(Head);
