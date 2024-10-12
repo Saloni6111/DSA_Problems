@@ -1,6 +1,6 @@
-// C++ program to print right view of Binary Tree
-// using recursion
-#include <bits/stdc++.h>
+#include <iostream>
+#include <queue>
+#include <vector>
 using namespace std;
 
 class Node {
@@ -14,30 +14,29 @@ public:
     }
 };
 
-void RecursiveRightView(Node* root, int level, 
-                        int& maxLevel, vector<int>& result) {
-    if (!root) return;
-
-    if (level > maxLevel) {
-        result.push_back(root->data);
-        maxLevel = level;
-    }
-
-    RecursiveRightView(root->right, level + 1,
-                       maxLevel, result);
-    RecursiveRightView(root->left, level + 1,
-                       maxLevel, result);
-}
-
-vector<int> rightView(Node *root) {
+vector<int> rightView(Node* root) {
     vector<int> result;
-    int maxLevel = -1;
-    RecursiveRightView(root, 0, maxLevel, result);
-    
+    if (!root) return result;
+
+    queue<Node*> q;
+    q.push(root);
+
+    while (!q.empty()) {
+        int n = q.size();
+        for (int i = 0; i < n; ++i) {
+            Node* node = q.front();
+            q.pop();
+            if (i == n - 1) {
+                result.push_back(node->data);
+            }
+            if (node->left) q.push(node->left);
+            if (node->right) q.push(node->right);
+        }
+    }
     return result;
 }
 
-void printArray(vector<int>& arr) {
+void printArray(const vector<int>& arr) {
     for (int val : arr) {
         cout << val << " ";
     }
@@ -52,8 +51,7 @@ int main() {
     root->right->right = new Node(5);
 
     vector<int> result = rightView(root);
-    
     printArray(result);
-    
+
     return 0;
 }
