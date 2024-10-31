@@ -4,27 +4,32 @@
 
 class Solution {
 public:
-    bool isValid(std::string s) {
-        std::stack<char> mp;
+    bool isValid(const std::string& s) {
+        std::stack<char> stack;
         
         for (char c : s) {
-            if (c == '(' || c == '[' || c == '{') {
-                mp.push(c);
-            } else {
-                if (mp.empty()) {
-                    return false;
-                }
-                if ((c == ')' && mp.top() == '(') ||
-                    (c == ']' && mp.top() == '[') ||
-                    (c == '}' && mp.top() == '{')) {
-                    mp.pop();
-                } else {
-                    return false; 
-                }
+            switch (c) {
+                case '(': case '[': case '{':
+                    stack.push(c);
+                    break;
+                case ')':
+                    if (stack.empty() || stack.top() != '(') return false;
+                    stack.pop();
+                    break;
+                case ']':
+                    if (stack.empty() || stack.top() != '[') return false;
+                    stack.pop();
+                    break;
+                case '}':
+                    if (stack.empty() || stack.top() != '{') return false;
+                    stack.pop();
+                    break;
+                default:
+                    return false; // Invalid character
             }
         }
         
-        return mp.empty();
+        return stack.empty();
     }
 };
 
