@@ -1,0 +1,86 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAXN 10000
+
+typedef struct Node {
+    int data;
+    struct Node* next;
+} Node;
+
+Node* adj[MAXN]; // Adjacency list for the tree
+int height[MAXN]; // Stores the height of each node's subtree
+int diameter = 0; // Stores the diameter of the tree
+
+// Add edge to the adjacency list (undirected graph)
+void addEdge(int u, int v) {
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    newNode->data = v;
+    newNode->next = adj[u];
+    adj[u] = newNode;
+
+    newNode = (Node*)malloc(sizeof(Node));
+    newNode->data = u;
+    newNode->next = adj[v];
+    adj[v] = newNode;
+}
+
+// DFS to calculate height and diameter
+int dfs(int node, int parent) {
+    int max1 = 0, max2 = 0; // Track the two largest heights from each child
+
+    // Traverse all adjacent nodes
+    Node* temp = adj[node];
+    while (temp != NULL) {
+        int child = temp->data;
+        if (child != parent) {
+            int childHeight = dfs(child, node);
+
+            // Update the two largest heights
+            if (childHeight > max1) {
+                max2 = max1;
+                max1 = childHeight;
+            } else if (childHeight > max2) {
+                max2 = childHeight;
+            }
+        }
+        temp = temp->next;
+    }
+
+    // Update the height of this node
+    height[node] = max1 + 1;
+
+    // Update the diameter
+    if (max1 + max2 > diameter) {
+        diameter = max1 + max2;
+    }
+
+    return height[node];
+}
+
+int main() {
+    int n = 5; // Number of nodes in the tree
+
+    // Initialize adjacency list
+    for (int i = 0; i < n; i++) {
+        adj[i] = NULL;
+    }
+
+    // Example tree
+    // 0 - 1
+    // |   |
+    // 2   3
+    // |
+    // 4
+    addEdge(0, 1);
+    addEdge(0, 2);
+    addEdge(1, 3);
+    addEdge(2, 4);
+
+    // Run DFS from node 0
+    dfs(0, -1);
+
+    printf("Diameter of the tree: %d\n", diameter);
+
+    return 0;
+}
